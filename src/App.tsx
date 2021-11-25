@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Button from "./Button";
+import Calculator from "./pages/Test/components/Calculator";
+import Test from "./pages/Test";
 
-function App() {
+const App = () => {
+  const [latestName, setLatestName] = useState("");
+  const updateLatestName = (name: string) => {
+    setLatestName(name);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Button name="hello " callback={updateLatestName} />
+      <Button name="world" callback={updateLatestName} />
+      <Button name="wnextop" callback={updateLatestName} />
+      <article>{latestName} is clicked!</article>
+
+      <Calculator />
+
+      <Test />
+    </>
   );
-}
+};
 
 export default App;
