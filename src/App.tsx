@@ -1,5 +1,6 @@
 import { Toolbar, AppBar, Grid, Box } from "@mui/material";
 import BottomAppBar from "./components/BottomAppBar";
+import Home from "./pages/Home";
 
 const App = (): JSX.Element => {
   return (
@@ -9,7 +10,8 @@ const App = (): JSX.Element => {
       </AppBar>
 
       <Toolbar />
-
+      <Home />
+      <Toolbar />
       <BottomAppBar />
     </main>
   );
