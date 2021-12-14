@@ -27,8 +27,8 @@ const Home = (): JSX.Element => {
                   />
                 </ListItemAvatar>
                 <ListItemText
-                  primary={<TradeInformation FirstName="ㅁㅇㄹ" />}
-                  secondary={item.location}
+                  primary={<TradeInformation FirstName="마인크래프트" />}
+                  secondary={<TradeInformation MiddelName="6000원" />}
                 />
               </ListItemButton>
             </ListItem>
