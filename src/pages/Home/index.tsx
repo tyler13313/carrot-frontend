@@ -6,6 +6,8 @@ import { Avatar } from "@mui/material";
 import { ListItemAvatar, ListItemText } from "@mui/material";
 import { tradeItems } from "./data";
 import TradeInformation from "./components/TradeInformation";
+import TradeEvent from "./components/TradeEvent";
+
 const ImageTheme = {
   width: "150px",
   height: "150px",
@@ -27,8 +29,17 @@ const Home = (): JSX.Element => {
                   />
                 </ListItemAvatar>
                 <ListItemText
-                  primary={<TradeInformation FirstName="마인크래프트" />}
-                  secondary={<TradeInformation MiddelName="6000원" />}
+                  primary={
+                    <>
+                      <TradeInformation
+                        title={item.title}
+                        location={item.location}
+                        createdAt={item.createdAt}
+                        price={item.price}
+                      />
+                      <TradeEvent chat={item.chat} interest={item.interest} />
+                    </>
+                  }
                 />
               </ListItemButton>
             </ListItem>
