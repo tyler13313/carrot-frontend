@@ -2,7 +2,7 @@ import { Toolbar, AppBar, Grid, Box } from "@mui/material";
 import BottomAppBar from "./components/BottomAppBar";
 import Home from "./pages/Home";
 import TradeInformation from "./pages/Home/components/TradeInformation";
-
+import TradeDetail from "./pages/TradeDetail";
 const App = (): JSX.Element => {
   return (
     <main>
@@ -11,9 +11,9 @@ const App = (): JSX.Element => {
       </AppBar>
 
       <Toolbar />
-      <Home />
+      <TradeDetail />
       <Toolbar />
-      <BottomAppBar />
+      {/* <BottomAppBar /> */}
     </main>
   );
 };

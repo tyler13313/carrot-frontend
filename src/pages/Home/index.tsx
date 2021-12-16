@@ -37,8 +37,10 @@ const Home = (): JSX.Element => {
                         createdAt={item.createdAt}
                         price={item.price}
                       />
-                      <TradeEvent chat={item.chat} interest={item.interest} />
                     </>
+                  }
+                  secondary={
+                    <TradeEvent chat={item.chat} interest={item.interest} />
                   }
                 />
               </ListItemButton>
