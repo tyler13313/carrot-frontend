@@ -1,16 +1,6 @@
-import {
-  Avatar,
-  Box,
-  Container,
-  Grid,
-  LinearProgress,
-  Typography,
-  AppBar,
-  Toolbar,
-  Button,
-} from "@mui/material";
+import { Avatar, Box, Grid, LinearProgress, Typography } from "@mui/material";
 import SentimentSatisfiedIcon from "@mui/icons-material/SentimentSatisfied";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import TradeAppBar from "./components/TradeAppBar";
 
 const TradeDetail = (): JSX.Element => {
   return (
@@ -53,44 +43,9 @@ const TradeDetail = (): JSX.Element => {
       <hr />
       <Typography variant="h4">안녕하세요 수현이를 팝니다</Typography>
       <Box>
-        물건 팝니다 <br /> 아주 싸게 팝니다
+        물건 팝니다 <br /> 아주 맛있습니다. 싸게 팝니다
       </Box>
-      <AppBar position="fixed" color="primary" sx={{ top: "auto", bottom: 0 }}>
-        <Toolbar>
-          <Grid container>
-            <Grid
-              item
-              xs={1}
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                alignContent: "center",
-              }}
-            >
-              <FavoriteBorderIcon color="primary" fontSize="large" />
-            </Grid>
-            <Grid item xs={8}>
-              <Grid container>
-                <Grid item xs={12}>
-                  <Typography variant="h5" color="#2b2b2b">
-                    <strong>50000원</strong>
-                  </Typography>
-                </Grid>
-                <Grid item xs={12}>
-                  <Typography variant="subtitle2" color="#2b2b2b">
-                    <strong>가격 제안하기</strong>
-                  </Typography>
-                </Grid>
-              </Grid>
-            </Grid>
-            <Grid item xs={3} sx={{ display: "felx", alignItems: "center" }}>
-              <Button variant="contained" color="secondary" fullWidth>
-                채팅으로 거래하기
-              </Button>
-            </Grid>
-          </Grid>
-        </Toolbar>
-      </AppBar>
+      <TradeAppBar isInterest={true} price={50000} isAdjustable={true} />
     </Box>
   );
 };
