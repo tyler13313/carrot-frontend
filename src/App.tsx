@@ -10,11 +10,12 @@ const App = (): JSX.Element => {
       {/* <AppBar position="fixed"> */}
       {/* <Toolbar></Toolbar> */}
       {/* </AppBar> */}
-      <Chat />
-
-      <Toolbar />
+      {/* <Chat /> */}
+      {/* <Home /> */}
+      <TradeDetail />
+      {/* <Toolbar /> */}
       {/* <TradeDetail /> */}
-      <Toolbar />
+      {/* <Toolbar /> */}
       {/* <BottomAppBar /> */}
     </main>
   );

@@ -1,3 +1,6 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+
 type TradeItem = {
   id: string;
   imageUrl: string;

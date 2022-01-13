@@ -7,13 +7,35 @@ import { ListItemAvatar, ListItemText } from "@mui/material";
 import { tradeItems } from "./data";
 import TradeInformation from "./components/TradeInformation";
 import TradeEvent from "./components/TradeEvent";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const ImageTheme = {
   width: "150px",
   height: "150px",
 };
 
+type TradeItem = {
+  id: string;
+  image: string;
+  title: string;
+  location: string;
+  createdAt: Date;
+  updatedAt?: Date;
+  price: number;
+  chat?: number;
+  interest?: number;
+};
+
 const Home = (): JSX.Element => {
+  const [tradeItems, setTradeItems] = useState<TradeItem[]>([]);
+  const readArticles = async () => {
+    const { data } = await axios.get("http://localhost:5000/trade/articles");
+    setTradeItems(data);
+  };
+  useEffect(() => {
+    readArticles();
+  }, []);
   return (
     <Box>
       <List>
@@ -22,11 +44,7 @@ const Home = (): JSX.Element => {
             <ListItem key={item.id}>
               <ListItemButton>
                 <ListItemAvatar>
-                  <Avatar
-                    variant="rounded"
-                    src={item.imageUrl}
-                    sx={ImageTheme}
-                  />
+                  <Avatar variant="rounded" src={item.image} sx={ImageTheme} />
                 </ListItemAvatar>
                 <ListItemText
                   primary={

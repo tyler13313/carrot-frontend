@@ -1,14 +1,38 @@
 import { Avatar, Box, Grid, LinearProgress, Typography } from "@mui/material";
 import SentimentSatisfiedIcon from "@mui/icons-material/SentimentSatisfied";
 import TradeAppBar from "./components/TradeAppBar";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { Title, TramRounded } from "@mui/icons-material";
+
+type TradeItem = {
+  id: string;
+  image: string;
+  title: string;
+  description: string;
+  location: string;
+  createdAt: Date;
+  updatedAt: Date;
+  price: number;
+  chat?: number;
+  isAdjustable: boolean;
+};
 
 const TradeDetail = (): JSX.Element => {
+  const [article, setArticle] = useState<TradeItem>();
+  const getArticle = async () => {
+    const { data } = await axios.get("http://localhost:5000/trade/articles/3");
+    setArticle(data);
+  };
+  useEffect(() => {
+    getArticle();
+  }, []);
   return (
     <Box paddingTop="20px">
       <Grid container>
         <Grid item xs={1}>
           <Avatar
-            src="https://photo.coolenjoy.net/data/editor/2102/0021a45da9ed8676494e1a817515c4459f996f9d.jpg"
+            src={article && article.image}
             sx={{ width: 80, height: 80 }}
           />
         </Grid>
@@ -18,7 +42,9 @@ const TradeDetail = (): JSX.Element => {
               <Typography variant="h6">아이디</Typography>
             </Grid>
             <Grid item xs={12}>
-              <Typography variant="subtitle1">지역</Typography>
+              <Typography variant="subtitle1">
+                <>{article && article.location}</>
+              </Typography>
             </Grid>
           </Grid>
         </Grid>
@@ -41,11 +67,15 @@ const TradeDetail = (): JSX.Element => {
         </Grid>
       </Grid>
       <hr />
-      <Typography variant="h4">안녕하세요 수현이를 팝니다</Typography>
-      <Box>
-        물건 팝니다 <br /> 아주 맛있습니다. 싸게 팝니다
-      </Box>
-      <TradeAppBar isInterest={true} price={50000} isAdjustable={true} />
+      <Typography variant="h4">{article && article.title}</Typography>
+      <Box>{article && article.description}</Box>
+      {article && (
+        <TradeAppBar
+          isInterest={true}
+          price={article.price}
+          isAdjustable={article.isAdjustable}
+        />
+      )}
     </Box>
   );
 };
